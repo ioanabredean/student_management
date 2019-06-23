@@ -1,16 +1,8 @@
-package org.fasttrackit.student_management.domain;
+package org.fasttrackit.student_management.transfer;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
-@Entity
-public class Student {
-
-    @Id
-    @GeneratedValue
-    private long id;
+public class CreateStudentRequest {
     @NotNull
     private String name;
     @NotNull
@@ -19,14 +11,6 @@ public class Student {
     private String courseEnrolment;
     @NotNull
     private String courseGroup;
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -58,5 +42,15 @@ public class Student {
 
     public void setCourseGroup(String courseGroup) {
         this.courseGroup = courseGroup;
+    }
+
+    @Override
+    public String   toString() {
+        return "CreateStudentRequest{" +
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", courseEnrolment='" + courseEnrolment + '\'' +
+                ", courseGroup='" + courseGroup + '\'' +
+                '}';
     }
 }
