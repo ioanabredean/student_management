@@ -12,9 +12,9 @@ public class Student {
     @GeneratedValue
     private long id;
     @NotNull
-    private String name;
+    private String firstName;
     @NotNull
-    private String surname;
+    private String lastName;
     @NotNull
     private String courseEnrolment;
     @NotNull
@@ -28,20 +28,20 @@ public class Student {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getSurname() {
-        return surname;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getCourseEnrolment() {
@@ -58,5 +58,16 @@ public class Student {
 
     public void setCourseGroup(String courseGroup) {
         this.courseGroup = courseGroup;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", courseEnrolment='" + courseEnrolment + '\'' +
+                ", courseGroup='" + courseGroup + '\'' +
+                '}';
     }
 }

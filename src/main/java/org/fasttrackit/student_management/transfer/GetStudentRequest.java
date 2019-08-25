@@ -2,31 +2,30 @@ package org.fasttrackit.student_management.transfer;
 
 public class GetStudentRequest {
 
-    private String partialName;
-    private String partialSurname;
+    private String partialFirstName;
+    private String partialLastName;
+
+    public String getPartialFirstName() {
+        return partialFirstName;
+    }
+
+    public void setPartialFirstName(String partialFirstName) {
+        this.partialFirstName = partialFirstName;
+    }
+
+    public String getPartialLastName() {
+        return partialLastName;
+    }
+
+    public void setPartialLastName(String partialLastName) {
+        this.partialLastName = partialLastName;
+    }
 
     @Override
     public String toString() {
         return "GetStudentRequest{" +
-                "partialName='" + partialName + '\'' +
-                ", partialSurname='" + partialSurname + '\'' +
+                "partialFirstName='" + partialFirstName + '\'' +
+                ", partialLastName='" + partialLastName + '\'' +
                 '}';
     }
-
-    public String getPartialName() {
-        return partialName;
-    }
-
-    public void setPartialName(String partialName) {
-        this.partialName = partialName;
-    }
-
-    public String getPartialSurname() {
-        return partialSurname;
-    }
-
-    public void setPartialSurname(String partialSurname) {
-        this.partialSurname = partialSurname;
-    }
-
 }

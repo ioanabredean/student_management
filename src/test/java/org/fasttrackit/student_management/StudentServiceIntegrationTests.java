@@ -38,8 +38,8 @@ public class StudentServiceIntegrationTests {
 
     private Student createStudent() {
         CreateStudentRequest request = new CreateStudentRequest();
-        request.setName("Ion");
-        request.setSurname("Pop");
+        request.setFirstName("Ion");
+        request.setLastName("Pop");
         request.setCourseEnrolment("Java");
         request.setCourseGroup("grupa 11");
 
@@ -47,8 +47,8 @@ public class StudentServiceIntegrationTests {
 
         assertThat(createdStudent,notNullValue());
         assertThat(createdStudent.getId(),greaterThan(0L));
-        assertThat(createdStudent.getName(), is(request.getName()));
-        assertThat(createdStudent.getSurname(),is(request.getSurname()));
+        assertThat(createdStudent.getFirstName(), is(request.getFirstName()));
+        assertThat(createdStudent.getLastName(),is(request.getLastName()));
         assertThat(createdStudent.getCourseEnrolment(),is(request.getCourseEnrolment()));
         assertThat(createdStudent.getCourseGroup(),is(request.getCourseGroup()));
 
@@ -80,16 +80,16 @@ public class StudentServiceIntegrationTests {
     public void testUpdateStudent_whenValidRequest_thenReturn_updatedStudent() throws ResourceNotFoundException {
         Student createdStudent = createStudent();
         UpdateStudentRequest request =new UpdateStudentRequest();
-        request.setName(createdStudent.getName()+"updated");
-        request.setSurname(createdStudent.getSurname()+"updated");
+        request.setFirstName(createdStudent.getFirstName()+"updated");
+        request.setLastName(createdStudent.getLastName()+"updated");
         request.setCourseGroup(createdStudent.getCourseGroup()+"updated");
         request.setCourseEnrolment(createdStudent.getCourseEnrolment()+"updated");
 
         Student updatedStudent=studentService.updateStudent(createdStudent.getId(),request);
 
         assertThat(updatedStudent, notNullValue());
-        assertThat(updatedStudent.getName(), is(request.getName()));
-        assertThat(updatedStudent.getSurname(),is(request.getSurname()));
+        assertThat(updatedStudent.getFirstName(), is(request.getFirstName()));
+        assertThat(updatedStudent.getLastName(),is(request.getLastName()));
         assertThat(updatedStudent.getCourseGroup(),is(request.getCourseGroup()));
         assertThat(updatedStudent.getCourseEnrolment(),is(request.getCourseEnrolment()));
     }
@@ -100,11 +100,10 @@ public class StudentServiceIntegrationTests {
         studentService.updateStudent(9999L, request);
     }
 
-    @Test
-    public void testDeleteStudentById_whenValidRequest_returnNull(){
+    @Test(expected = ResourceNotFoundException.class)
+    public void testDeleteStudentById_whenValidRequest_returnNull() throws ResourceNotFoundException {
         Student createdStudent = createStudent();
         studentService.deleteStudent(createdStudent.getId());
-
-        assertThat( createdStudent.getId(), nullValue());
+        studentService.getStudent(createdStudent.getId());
     }
 }

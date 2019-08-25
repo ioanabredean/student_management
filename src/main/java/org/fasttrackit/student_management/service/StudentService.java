@@ -72,11 +72,11 @@ public class StudentService {
     public Page<Student> getStudent (GetStudentRequest request, Pageable pageable){
         LOGGER.info("Retrieving students {}", request);
 
-        if (request.getPartialName()!=null){
-            return studentRepository.findByNameContaining(request.getPartialName(),pageable);
+        if (request.getPartialFirstName()!=null){
+            return studentRepository.findByFirstNameContaining(request.getPartialFirstName(),pageable);
         }
-        else if (request.getPartialSurname()!=null){
-            return studentRepository.findBySurnameContaining(request.getPartialSurname(),pageable);
+        else if (request.getPartialLastName()!=null){
+            return studentRepository.findByLastNameContaining(request.getPartialLastName(),pageable);
         }
         return studentRepository.findAll(pageable);
     }
